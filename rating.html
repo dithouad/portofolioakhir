@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rating Form</title>
+    <link rel="stylesheet" href="styles/rating.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <section id="rating-form">
+        <h2>Rating Form</h2>
+        <form action="php/submit_rating.php" method="POST">
+          <div>
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div>
+            <label>Rating Kinerja:</label><br />
+            <input type="radio" id="rating1" name="rating" value="1" required />
+            <label for="rating1">1</label>
+            <input type="radio" id="rating2" name="rating" value="2" />
+            <label for="rating2">2</label>
+            <input type="radio" id="rating3" name="rating" value="3" />
+            <label for="rating3">3</label>
+            <input type="radio" id="rating4" name="rating" value="4" />
+            <label for="rating4">4</label>
+            <input type="radio" id="rating5" name="rating" value="5" />
+            <label for="rating5">5</label>
+          </div>
+          <div>
+            <label for="kritik">Kritik:</label><br />
+            <textarea id="kritik" name="kritik" rows="4" cols="50"></textarea>
+          </div>
+          <div>
+            <label for="saran">Saran:</label><br />
+            <textarea id="saran" name="saran" rows="4" cols="50"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="btn-submit">Submit</button>
+          </div>
+        </form>
+        <a href="javascript:history.go(-1);" class="btn-back">Kembali</a>
+      </section>
+    </div>
+
+    <script>
+      function validateForm() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var rating = document.querySelector(
+          'input[name="performance_rating"]:checked'
+        );
+
+        if (name.trim() === "") {
+          alert("Nama harus diisi");
+          return false;
+        }
+
+        if (email.trim() === "") {
+          alert("Email harus diisi");
+          return false;
+        }
+
+        if (!rating) {
+          alert("Rating kinerja harus dipilih");
+          return false;
+        }
+
+        return true;
+      }
+
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>
